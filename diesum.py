@@ -1,21 +1,24 @@
+from itertools import product
+
 n=int(input())
 
 pre=[0]*((6*n)+1)
 p=1.0/6.0**n
 
-def dicethrow(n,N):
-    for j in range(1,7):
-        if n > 1:
-            k = j + dicethrow(n-1,N)
-            if n == N:
-                pre[k]+=p
-            else:
-                return k
-        else:
-            return j
+numbers = product([1, 2, 3, 4, 5, 6], repeat=n)
 
+throws = list(numbers)
 
-dicethrow(n,n)
+sums=[0]*(6**n)
 
-for i in range(len(pre)):
-    print(pre[i])
+for i in range(len(sums)):
+    thrown = 0
+    for j in range(n):
+        thrown += throws[i][j]
+    sums[i]=thrown
+
+for k in range(len(sums)):
+    pre[sums[k]] += p
+
+for l in range(n, len(pre)):
+    print(pre[l])
