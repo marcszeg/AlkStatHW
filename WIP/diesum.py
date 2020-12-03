@@ -5,9 +5,9 @@ n=int(input())
 pre=[0]*((6*n)+1)
 p=1.0/6.0**n
 
-numbers = product([1, 2, 3, 4, 5, 6], repeat=n)
+#numbers = product([1, 2, 3, 4, 5, 6], repeat=n)
 
-throws = list(numbers)
+throws = list(product([1, 2, 3, 4, 5, 6], repeat=n))
 
 sums=[0]*(6**n)
 
